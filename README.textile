@@ -1,1 +1,105 @@
-design_document
+h1. Communist Zombie Game
+
+One of the main goals in this idea is to implement a room generation system
+that can make interesting rooms with a minimum of fuss, and link them together
+in a systematic, non-random way, so that I can make a vast, nearly infinite map
+that players would be able to wander about on together, without having to
+resort to hand-crafting the map or having the player store gigabytes of map
+data.
+
+One way to do this is by using a random number generator, and starting from
+scratch, working our way from there. The biggest problem with this is
+controlling the quality of the produced product. I think that with enough
+testing and 'sanity' checking, this would be a surmountable obstacle.
+
+h2. Combat:
+
+A thought that I just had concerning combat: will it be real-time, or something
+more turn-based? There are problems inherent in both approaches, and I will
+have to think about them quite a bit until I figure out what would work the
+best.
+
+First, we'll take a look at a turn-based approach. The main game would have to
+be real-time, in order to provide the sort of interactivity that I wish to have
+in the game. Players need to wander around, and see other players wandering
+around, even if they themselves aren't moving or doing anything. The world
+needs to be active. With this approach, the timing of the game would change as
+soon as combat was entered, be it with another player or with a non-player. The
+turn based combat, if done in the style of most RPG games to date, would take
+place in an arena area that was separate from the general map. This is to
+facilitate a fair and equal balance between players. Combats taking place would
+probably appear as icons or something similar on the world map, so that passing
+players would know what is going on.
+
+This approach has advantages and disadvantages, though.
+
+h3. Advantages:
+
+* The players need not worry about the surrounding environment when the combat
+  is initiated. The combat takes place in an arena containing only the
+  combatants.
+* There would be either a controlled way for other parties to enter the combat,
+  or there would be no way.
+* Groups of people would be able to schedule combat, that is to say it would be
+  very easy to create group-on-group matches, should that sort of thing be
+  required.
+
+h3. Disadvantages:
+
+* There is a large area of possible exploitation, if players figure out some
+  way to rig the system up to give them combat with weak, or high-experience,
+  creatures.
+* The switch back from combat would be jarring, in the sense that the
+  participating players would have to quickly take into account the
+  surroundings when combat ended.
+* If a player can initiate combat with another player without that player's
+  consent, a large group of 'greifers' would be able to easily take advantage
+  of an area filled with players, keeping the players from enjoying the game by
+  continuously initiating combat with them.
+
+There are probably more issues with this turn-based form of combat, and I
+really think that it wouldn't fit the idea of a communist zombie game, at any
+rate. Zombies would be a terrible force in large numbers, and their inability
+to swarm upon players already in combat would be something that completely
+changed the game.
+
+There is another idea, and that would be a real-time combat system. In a
+roguelike environment, players have plenty of time to think what their next
+turn would be. Unfortunately, this ability to think doesn't apply to a
+real-time game. The controls would have to be quickly accessible, and easy to
+figure out, so that a player may 'jump right in' with a minimum of
+introduction.
+
+As I think about it, a real-time system would be easy to exploit, with a
+near-infinite run speed or 100+ attacks in a second, so there would definitely
+have to be some sort of throttling facility to prevent that. This would more
+than likely be in the 'sanity checking' part of the code.
+
+h2. Environment:
+
+The environment would be convenient to implement with a system like Dungeon
+Seige's, where rooms link to one-another via their doors, and are separate
+spaces in memory. This would allow for environments that span a great distance,
+and allow the player to explore for a great while. Of course, the ability to
+sense what is nearby is also important, and so the player would be able to see
+past the doorways, or hear things from the next room over. This awareness needs
+to be implemented in a way that is convenient to display, while at the same
+time portable and not 'in the way.'
+
+This will be an area that a lot of thought is given to.
+
+h2. Character Development:
+
+As per Squidi's idea, the player characters will be 'one-off' entities, that
+disappear when they die. To soften the blow of death, the players do carry over
+something they earn, called badges. When a character dies, their stuff remains,
+ready to be picked up by other players (This aspect of the game will definitely
+require a lot of thinking to manage, without extreme amounts of space being
+used on the server.)
+
+When a player starts a character, they will play a random choice from one of a
+plethora of different character types, with randomized stats. They don't have a
+choice in the matter, as the character they get is the character they will play
+until the next death. I'm not sure if I will allow different chances for
+different things, implementing a sort of common->medium->rare scheme of player
+types. This will require thought.
