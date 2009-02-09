@@ -13,4 +13,8 @@ main.o:
 
 .PHONY : clean
 clean:
+	# Remove things that would be added from compiling:
 	-rm *.o *~ czgame
+	# Remove things that shouldn't be there:
+	-rm .*.swp
+
