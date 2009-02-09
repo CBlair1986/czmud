@@ -1,0 +1,37 @@
+SRCDIR=.
+INCDIR=include
+CFLAGS=$(FLAGS) -I$(INCDIR) -I$(SRCDIR) -Wall
+CC=gcc
+CPP=g++
+TEMP=/tmp
+.SUFFIXES: .o .h .c .hpp .cpp
+
+$(TEMP)/%.o : $(SRCDIR)/%.cpp
+	$(CPP) $(CFLAGS) -o $@ -c $< 
+$(TEMP)/%.o : $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $< 
+$(TEMP)/hmtool/%.o : $(SRCDIR)/src/hmtool/%.cpp
+	$(CPP) $(CFLAGS) -o $@ -c $< 
+
+C_OBJS=$(TEMP)/samples_c.o
+CPP_OBJS=$(TEMP)/samples_cpp.o
+
+HMTOOLOBJS=$(TEMP)/hmtool/hmtool.o \
+	$(TEMP)/hmtool/operation.o
+
+all : samples_c samples_cpp $(TEMP)/hmtool hmtool
+
+$(TEMP)/hmtool :
+	\mkdir -p $@
+
+samples_c : $(C_OBJS) libtcod.so
+	$(CC) $(C_OBJS) $(CFLAGS) -o $@ -L. -ltcod $(CFLAGS)
+
+samples_cpp : $(CPP_OBJS) libtcod++.so
+	$(CPP) $(CPP_OBJS) -o $@ -L. -ltcod -ltcod++ $(CFLAGS)
+
+hmtool : $(HMTOOLOBJS)
+	$(CPP) -o $@ $(HMTOOLOBJS) -L. -ltcod -ltcod++ -ltcod-gui $(CFLAGS)
+
+clean :
+	\rm -f $(C_OBJS) $(CPP_OBJS) $(HMTOOLOBJS) samples_c samples_cpp hmtool
