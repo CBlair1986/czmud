@@ -5,8 +5,8 @@ CC= g++
 WFLAGS= # -Wall
 LDFLAGS= -L$(TCOD) -ltcod -ltcod++ -I$(INCLUDE)
 
-all: main.o region.o player.o
-	$(CC) -o czgame main.o region.o player.o $(WFLAGS) $(LDFLAGS)
+all: main.o region.o player.o nonplayer.o
+	$(CC) -o czgame main.o region.o player.o nonplayer.o $(WFLAGS) $(LDFLAGS)
 
 main.o: main.cpp region.h
 	$(CC) -c main.cpp $(WFLAGS) $(LDFLAGS)
@@ -16,6 +16,9 @@ region.o: region.cpp region.h
 
 player.o: player.cpp player.h
 	$(CC) -c player.cpp $(WFLAGS) $(LDFLAGS)
+
+nonplayer.o: nonplayer.cpp nonplayer.h
+	$(CC) -c nonplayer.cpp $(WFLAGS) $(LDFLAGS)
 
 .PHONY : clean
 clean:

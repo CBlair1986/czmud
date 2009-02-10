@@ -2,6 +2,7 @@
 #include "region.h"
 #include "defines.h"
 #include "player.h"
+#include "nonplayer.h"
 
 bool endGame;
 
