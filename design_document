@@ -1,5 +1,8 @@
 h1. Communist Zombie Game
 
+This is an idea that I have given some thought to, although I cannot take all
+the credit, as a fine man named Squidi first came up with it "here":http://www.squidi.net/three/entry.php?id=30.
+
 One of the main goals in this idea is to implement a room generation system
 that can make interesting rooms with a minimum of fuss, and link them together
 in a systematic, non-random way, so that I can make a vast, nearly infinite map
