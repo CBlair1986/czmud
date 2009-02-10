@@ -1,0 +1,15 @@
+libtcod 1.4.1 uses following products :
+
+- upx, The Ultimate Packer for eXecutables, by Markus Oberhumer, Laszlo Molnar & John Reiser
+   http://upx.sourceforge.net
+- zlib 1.2.3, by Jean-loup Gailly and Mark Adler
+   http://www.zlib.org
+- libpng 1.2.31, by Glenn Randers-Pehrson
+   http://www.libpng.org
+- SDL 1.2.12, by Sam Lantingua
+   http://www.libsdl.org
+
+Many thanks to everyone who provided feedback, and especially to Hex Decimal & Altefcat for their contribution to the python port.
+
+The celtic_garamond_10x10.png font used by the samples is provided by Mingos.
+
