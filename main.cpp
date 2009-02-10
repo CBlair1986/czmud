@@ -1,3 +1,4 @@
+// TODO: Reorganize, get things settled into a sensible, understandable flow.
 #include "libtcod.hpp"
 #include "region.h"
 #include "defines.h"
@@ -40,3 +41,17 @@ int main()
     // Cleanup goes here...
     return 0;
 }
+
+
+/*
+ * Ideally, I want to have something with entry points, like this pseudo-code:
+ *
+ * main( arguments )
+ * {
+ * initial setup ( arguments )
+ * startup stuff () <- Where we get the information from player.
+ * begin mainloop ()
+ * on exit functions () <- cleanup, saving, etc.
+ * exit ()
+ * }
+ */
