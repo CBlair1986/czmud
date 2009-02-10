@@ -70,10 +70,21 @@ int main()
      */
     TCODConsole::initRoot(80,50,"CZGame",false);
     Player * player = new Player (0,0,'@');
+    NonPlayer * monst[50000];
+    char * symbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (int i = 0; i < 50000; i++)
+    {
+        monst[i] = new NonPlayer (i % 80,25,symbols[i % 52]);
+    }
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {
         // Draw functions go here...
         TCODConsole::root->clear();
+        for (int i = 0; i < 50000; i++)
+        {
+            monst[i]->update();
+            monst[i]->draw();
+        }
         player->draw();
         TCODConsole::flush();
         TCOD_key_t * key=&TCODConsole::waitForKeypress(true);
