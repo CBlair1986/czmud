@@ -1,0 +1,260 @@
+Portals
+-or-
+"This doesn't make any sense..."
+
+So I came across a really interesting article recently. I detailed the
+game engine underlying Dungeon Siege, a game that boasted of a seamless
+environment. This might not seem like quite the feat, but at the time
+of its release it was quite the buzz.
+
+I've been thinking of the mechanism behind DS's seamless world, a
+variation on portals, and wondered about ways to apply the same thing
+to a roguelike.
+
+DS used this technology because they couldn't store large enough
+chunks of the map in memory at one time. In a roguelike, I believe it's
+theoretically possible to store several levels of the dungeon at one time,
+so there is no need for portals to alleviate memory issues.
+
+No, I was thinking of it more along the lines of how it would affect
+gameplay.
+
+In the real world, one becomes used to the spatial relationships between
+objects, and we expect that when we turn a corner around a building,
+we see a different wall; or when walk through a doorway, we end up in
+a different room. Rooms don't intersect in the real world, and in most
+games that 'knowledge' carries over. Players even react adversely to
+situations where things do not conform to standards of reality like this,
+complaining when instances of clipping or improper z-order arise.
+
+What if a game implemented portals as a mechanism to purposefully go
+against these standards of reality. It's not a new idea in the general
+gaming world, with popular games such as Portal bending the player's
+mind to great effect. But so far as I know, there aren't any roguelikes
+that use this mechanism.
+
+Before continuing, I would like to clarify. Portals, as I refer to them,
+are merely boundaries on two different objects--be they regions, rooms,
+or whatnot--that can be joined seamlessly together.
+
+Take the following rooms:
+
+:Room A
+###-##
+#.N..#
+#.S..|
+######
+
+:Room B
+#-######
+#...N..#
+#...S..|
+########
+
+The NS is meant to represent orientation, and the -'s and |'s the
+portals. If I were to join rooms A and B together in all the possible
+ways, I would get the following combinations:
+
+     ##-#
+     #..#
+     #..#
+     #NS#
+###-##..#
+#.N..#..#
+#.S..|..#
+#########
+
+###-##
+#.N..########
+#.S..|..S...#
+######..N...#
+     ######-#
+
+########
+|..S...#
+#..N...#
+######-##
+   #.N..#
+   #.S..|
+   ######
+
+  ####
+  #..|
+  #..#
+  #..#
+  #SN#
+  #..#
+  #..#
+###-##
+#.N..#
+#.S..|
+######
+
+Note how the orientation of the rooms is not set in stone, demonstrated
+by room B's decidedly dizzying nature. This is something that I really
+like. When the rooms are generated from their random numbers, you
+get many more possibilities than if the orientation of the rooms was
+static. Do note that you could very well generate a string of rooms,
+and only have portals in certain areas, perhaps where gameplay demanded:
+
+     #####
+     |...#####
+######.N.....#
+#......S.#...|
+#....#####...#
+##-###   #####
+
+I will stick to referencing single rooms, as I don't want to spend a
+hundred hours making room clusters by hand. I hope that is alright.
+
+As I said, when you randomly generate these rooms or clusters of rooms,
+you 'automatically' get many more possiblities than you had to generate. I
+consider this to be a side-benefit, though. The real reason I'd love to
+implement this mechanic is decidedly more on the fringe.
+
+I'm sure some of you have pondered the following by now:
+
+:Room A
+#####
+#...#
+#.###
+#.|
+###
+
+:Room B
+#####
+#...#
+###.#
+  |.#
+  ###
+
+What would happen when these two rooms were combined? Surely not the
+following:
+
+#####
+#...#
+#####
+#.|.#
+#####
+
+That's simply silly.
+
+Well, it all depends on where the @ is standing, I suppose:
+
+ ####
+  ..#
+#.#.#
+#.|@#
+#####
+
+#####
+#..@#
+###.#
+  |.#
+ ####
+
+## ##
+#. .#
+#.#.#
+#.@.#
+#####
+
+#####
+#@..#
+#.###
+#.|
+####
+
+Well, that seems slightly nonsensical. Less silly than the other
+possibility, though. Do you suppose that @ is confused? I sure would be,
+if I didn't know what was going on.
+
+So, you can overlap rooms. It is definitely interesting, but what about
+another possibility?
+
+:Room A
+#####
+#...|
+#...#
+#...|
+#####
+
+:Room B
+###
+|.|
+###
+
+:Room C
+########
+|......|
+########
+
+:Room D
+#####
+|...#
+#...#
+|...#
+#####
+
+If our @ is standing in room A, and the two portals lead to rooms B and C,
+which then link to room D's portals, like so:
+
+###########
+#..@|.|...#
+#...### ..#
+#...|
+#####
+
+#####
+#...|
+#...########
+#..@|......|...#
+################
+
+which way would be most efficient?
+
+One final case that I have given thought to:
+
+:Room A
+##A##
+#...#
+B../C
+#...#
+##D##
+
+Here I'm using the letters A, B, C and D to represent the portals,
+to try and see how a room linking to itself would work. The / is some
+random item (perhaps a nice wand of "Make Sense").
+
+If A links to C, and B to D:
+ #-#
+  .
+  .
+  /
+##-##
+#.@.#
+|../|@ <--- This is you, unbelievably.
+#...#
+##-##
+  .
+  .
+ ./.
+ #-#
+  @ <--- This is you, again. You look nice.
+
+I suppose that this scenario would actually want to draw an infinite map,
+so there would certainly have to be a cut-off point, before we really
+hit ad-absurdum.
+
+But still, it is a novel idea. Have I missed out on any more obscure
+uses for a system such as this?
+
+Another reason I was thinking of this idea, going off on a tangent,
+is the possibility of implementing a roguelike version of the
+probably over-mentioned blog posts made by a man named Squidi
+(http://www.squidi.net/three/entry.php?id=30) about a Communist Zombie
+MUD. So I wanted a system that would be capable of "bigness" while at
+the same time being easy on a server. One humongous, persistent world
+would be rather difficult to serve, even to a text-based client.
+
+Let's have a conversation.
