@@ -13,6 +13,7 @@ char *to_string(T an_int)
     char *buff = new char[sout.str().length()+1];
     std::strcpy(buff,sout.str().c_str());
     return buff;
-}
+};
 
+extern bool endGame;
 #endif

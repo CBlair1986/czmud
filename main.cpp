@@ -1,90 +1,35 @@
 #include "libtcod.hpp"
 #include "region.h"
 #include "defines.h"
+#include "input.h"
 #include "player.h"
 #include "nonplayer.h"
 
 bool endGame;
-
-void handleCharacter (TCOD_key_t * key, Player * player)
-{
-    switch (key->c) {
-        case 'h':
-            player->moveWest(1);
-            break;
-        case 'k':
-            player->moveNorth(1);
-            break;
-        case 'j':
-            player->moveSouth(1);
-            break;
-        case 'l':
-            player->moveEast(1);
-            break;
-        case 'y':
-            player->moveNorth(1);
-            player->moveWest(1);
-            break;
-        case 'u':
-            player->moveNorth(1);
-            player->moveEast(1);
-            break;
-        case 'b':
-            player->moveSouth(1);
-            player->moveWest(1);
-            break;
-        case 'n':
-            player->moveSouth(1);
-            player->moveEast(1);
-            break;
-    }
-}
-
-void handleInput (TCOD_key_t * key, Player * player)
-{
-    switch (key->vk) {
-        case TCODK_ESCAPE:
-            endGame = true;
-            break;
-        case TCODK_UP:
-            player->moveNorth(1);
-            break;
-        case TCODK_DOWN:
-            player->moveSouth(1);
-            break;
-        case TCODK_LEFT:
-            player->moveWest(1);
-            break;
-        case TCODK_RIGHT:
-            player->moveEast(1);
-            break;
-        case TCODK_CHAR:
-            handleCharacter(key, player);
-            break;
-    }
-}
 
 int main()
 {   
     /*
      * This will be a bit of a test. To see if it works, and such.
      */
+    endGame = false;
     TCODConsole::initRoot(80,50,"CZGame",false);
     Player * player = new Player (0,0,'@');
-    NonPlayer * monst[50000];
+    TCODList<NonPlayer *> monst;
     char * symbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (int i = 0; i < 50000; i++)
     {
-        monst[i] = new NonPlayer (i % 80,25,symbols[i % 52]);
+        monst.push(new NonPlayer (i % 80,25,symbols[i % 52]));
     }
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {
         // Draw functions go here...
         TCODConsole::root->clear();
-        for (int i = 0; i < 50000; i++)
+        for (NonPlayer * * i = monst.begin(); i != monst.end(); i++)
         {
-            monst[i]->update();
-            monst[i]->draw();
+            NonPlayer * monst = *i;
+            monst->update();
+            monst->draw();
         }
         player->draw();
         TCODConsole::flush();
