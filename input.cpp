@@ -3,6 +3,7 @@
 #include "player.h"
 #include "defines.h"
 
+// Used to handle input, when the input is not a special key like Enter.
 void handleCharacter (TCOD_key_t * key, Player * player)
 {
     switch (key->c) {
@@ -37,6 +38,8 @@ void handleCharacter (TCOD_key_t * key, Player * player)
     }
 }
 
+// Handles input, this is the entry point of all interactivity.
+// TODO: Could use some work.
 void handleInput (TCOD_key_t * key, Player * player)
 {
     switch (key->vk) {
