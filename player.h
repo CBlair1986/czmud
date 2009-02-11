@@ -5,16 +5,17 @@
 
 class Player
 {
-    Vector pos;
+    Position pos;
     char symbol;
     TCODColor fgcolor, bgcolor;
     public:
-    Player (int, int, char);
-    Player (int, int, char, TCODColor, TCODColor);
+    Player (int, int, char, Region*);
+    Player (int, int, char, Region*, TCODColor, TCODColor);
     void moveSouth(int);
     void moveNorth(int);
     void moveEast(int);
     void moveWest(int);
     void draw();
+    void drawRegion();
 };
 #endif

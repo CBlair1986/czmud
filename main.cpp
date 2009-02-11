@@ -15,13 +15,20 @@ int main()
      */
     endGame = false;
     TCODConsole::initRoot(80,50,"CZGame",false);
-    Player * player = new Player (0,0,'@');
+    Region * r = new Region(1);
+    Player * player = new Player (0,0,'@',r);
     TCODList<NonPlayer *> monst;
     char * symbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    TCODRandom * gen = new TCODRandom();
     for (int i = 0; i < 50000; i++)
     {
-        monst.push(new NonPlayer (i % 80,25,symbols[i % 52]));
+        int red = gen->getInt(0,255);
+        int green = gen->getInt(0,255);
+        int blue = gen->getInt(0,255);
+        TCODColor fgcolor (red,green,blue);
+        monst.push(new NonPlayer (i % 80,25,symbols[i % 52],r,fgcolor));
     }
+    delete gen;
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {
         // Draw functions go here...
