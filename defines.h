@@ -1,6 +1,7 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+#include "main.h"
 #include <sstream>
 #include <cstring>
 
@@ -15,5 +16,4 @@ char *to_string(T an_int)
     return buff;
 };
 
-extern bool endGame;
 #endif

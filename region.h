@@ -1,6 +1,6 @@
 #ifndef REGION_H
 #define REGION_H
-#include "libtcod.hpp"
+#include "main.h"
 
 class Region
 {
@@ -9,13 +9,21 @@ class Region
      * rooms that this room links to.
      *
      * Gonna be interesting...
+     *
+     * What does a region need?
+     * * a place to store things that it contains.
+     *   most probably gonna be a simple list structure, with push/pop, etc. TCODList?
+     * * a place to store its floor tiles, so it knows its shape.
+     *   this would probably be an array, since I'm always gonna need the whole thing...
      */
     uint32 seed;
-
+    int floor[][];
     public:
     Region(uint32);
     Region(int);
     int getSeed() { return seed; }
+    void makeRegion();
+    void drawRegion();
 };
 
 #endif

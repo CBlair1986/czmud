@@ -4,12 +4,12 @@ INCLUDE= $(TCOD)/include
 CC= g++
 WFLAGS= # -Wall
 LDFLAGS= -L$(TCOD) -ltcod -ltcod++ -I$(INCLUDE)
-OBJS= main.o region.o player.o nonplayer.o input.o
+OBJS= main.o region.o player.o nonplayer.o input.o globals.o
 
 all: $(OBJS)
 	$(CC) -o czgame $(OBJS) $(WFLAGS) $(LDFLAGS)
 
-main.o: main.cpp 
+main.o: main.cpp main.h
 	$(CC) -c main.cpp $(WFLAGS) $(LDFLAGS)
 
 region.o: region.cpp region.h
@@ -23,6 +23,9 @@ nonplayer.o: nonplayer.cpp nonplayer.h
 
 input.o: input.cpp input.h defines.h
 	$(CC) -c input.cpp $(WFLAGS) $(LDFLAGS)
+
+globals.o: globals.h globals.cpp
+	$(CC) -c globals.cpp $(WFLAGS) $(LDFLAGS)
 
 .PHONY : clean
 clean:

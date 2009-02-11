@@ -1,5 +1,4 @@
-#include "player.h"
-#include "nonplayer.h"
+#include "main.h"
 /**
  * Moves a NonPlayer according to a random choice.
  */

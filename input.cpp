@@ -1,7 +1,4 @@
-#include "input.h"
-#include "libtcod.hpp"
-#include "player.h"
-#include "defines.h"
+#include "main.h"
 
 // Used to handle input, when the input is not a special key like Enter.
 void handleCharacter (TCOD_key_t * key, Player * player)
