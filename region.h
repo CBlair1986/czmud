@@ -17,10 +17,12 @@ class Region
      *   this would probably be an array, since I'm always gonna need the whole thing...
      */
     uint32 seed;
-    int floor[][];
+    int centerx, centery;
+    int * * floor;
     public:
     Region(uint32);
     Region(int);
+    Region(int * *);
     int getSeed() { return seed; }
     void makeRegion();
     void drawRegion();

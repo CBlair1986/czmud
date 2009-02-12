@@ -12,6 +12,13 @@ Region::Region(int a_seed)
     makeRegion();
 }
 
+// This is mainly for testing purposes; I can define a set floor pattern, to
+// see if it displays correctly.
+Region::Region(int * * a_floor)
+{
+    floor = a_floor;
+}
+
 // TODO: This will set the region up, storing the neccessary data for the room
 // for later use.
 void Region::makeRegion()

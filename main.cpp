@@ -23,6 +23,8 @@ int main()
     // Cleanup goes here...
     return 0;
 }
+
+
 /*
  * Ideally, I want to have something with entry points, like this pseudo-code:
  *
