@@ -4,6 +4,12 @@
 // Here are all the includes.
 // I will use them everywhere.
 
+#include <sstream>
+#include <string>
+#include <vector>
+#include <cstring>
+using namespace std;
+
 #include "libtcod.hpp"
 #include "region.h"
 #include "vector.h"
@@ -13,7 +19,5 @@
 #include "nonplayer.h"
 #include "input.h"
 
-#include <sstream>
-#include <cstring>
 
 #endif

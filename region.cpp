@@ -14,7 +14,7 @@ Region::Region(int a_seed)
 
 // This is mainly for testing purposes; I can define a set floor pattern, to
 // see if it displays correctly.
-Region::Region(int * * a_floor)
+Region::Region(vector<vector<int > > a_floor)
 {
     floor = a_floor;
 }

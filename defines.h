@@ -2,8 +2,6 @@
 #define DEFINES_H
 
 #include "main.h"
-#include <sstream>
-#include <cstring>
 
     template <class T> 
 char *to_string(T an_int)

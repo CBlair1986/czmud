@@ -18,11 +18,11 @@ class Region
      */
     uint32 seed;
     int centerx, centery;
-    int * * floor;
+    vector<vector<int > > floor;
     public:
     Region(uint32);
     Region(int);
-    Region(int * *);
+    Region(vector<vector<int > >);
     int getSeed() { return seed; }
     void makeRegion();
     void drawRegion();

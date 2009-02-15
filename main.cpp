@@ -8,6 +8,23 @@ int main()
      */
     endGame = false;
     TCODConsole::initRoot(80, 50, "CZGame", false);
+    char *field[] =
+    { "....####",
+        "....#..#",
+        "....#..#",
+        "#####..#",
+        "#......#",
+        "#......#",
+        "########" };
+    vector<vector<int > > vfield;
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            vfield[i][j] = field[i][j];
+        }
+    }
+    /*
     Region * region = new Region(1);
     Player * player = new Player (0, 0, '@', region);
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
@@ -21,6 +38,7 @@ int main()
         handleInput(key, player);
     }
     // Cleanup goes here...
+    */
     return 0;
 }
 
