@@ -10,10 +10,10 @@
 #include <cstring>
 using namespace std;
 
+#include "globals.h"
 #include "libtcod.hpp"
 #include "region.h"
 #include "vector.h"
-#include "globals.h"
 #include "defines.h"
 #include "player.h"
 #include "nonplayer.h"

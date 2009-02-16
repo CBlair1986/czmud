@@ -19,13 +19,22 @@ int main()
     vector<vector<int > > vfield;
     for (int i = 0; i < 8; i++)
     {
+        vfield.push_back(vector<int>(8));
+    }
+    for (int i = 0; i < 8; i++)
+    {
         for (int j = 0; j < 8; j++)
         {
-            vfield[i][j] = field[i][j];
+            if (field[i][j] == '#')
+            {
+            vfield[i][j] = 1;
+            } else
+            {
+                vfield[i][j] = 0;
+            }
         }
     }
-    /*
-    Region * region = new Region(1);
+    Region * region = new Region(vfield);
     Player * player = new Player (0, 0, '@', region);
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {
@@ -38,7 +47,6 @@ int main()
         handleInput(key, player);
     }
     // Cleanup goes here...
-    */
     return 0;
 }
 
