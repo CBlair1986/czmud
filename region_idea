@@ -1,0 +1,18 @@
+I just had a thought, brought about by reading: http://umbrarumregnum.110mb.com/art5.php
+
+Why store the building as an array of floor tiles? You could just as easily store the building as a list of positions, that draw to one another, ala vector graphics.
+
+That way, the following:
+ 01234567
+0....####
+1....#..#
+2....#..#
+3#####..#
+4#......#
+5#......#
+6#......#
+7########
+
+can be stored as a list of positions like [[4,0],[7,0],[7,7],[0,7],[0,3],[4,3]]
+
+which is remarkably smaller than the previous.
