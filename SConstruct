@@ -11,3 +11,4 @@ input = env.Object('input.cpp')
 
 objects = [main, globals, region, player, nonplayer, input]
 env.Program('czgame', objects)
+Clean(main,[Glob('*~'),Glob('*.swp'),'.sconsign.dblite','*~'])
