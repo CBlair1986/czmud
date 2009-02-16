@@ -31,16 +31,12 @@ void Region::makeRegion()
 // regions when neccessary.
 void Region::drawRegion()
 {
-    /*
-       cout << floor.size() << endl;
-       cout << "X: " << centerx << endl;
-       cout << "Y: " << centery << endl;
-       */
-
     // I need to draw the appropriate region using the appropriate symbols.
     // 0 -> ' '
     // 1 -> '#'
     // Should be easy.
+    // TODO Make this sensible. You should reference the number you get to some
+    // sort of table of types, one per number possible.
     int width = floor[0].size();
     int height = floor.size();
     int half_width = width / 2;
@@ -50,9 +46,12 @@ void Region::drawRegion()
         for (int j = 0; j < width; j++)
         {
             char symbol;
-            if (floor[i][j])
+            if (floor[i][j] == 1)
             {
                 symbol = '#';
+            } else if (floor[i][j] == 2)
+            {
+                symbol = '.';
             } else
             {
                 symbol = ' ';

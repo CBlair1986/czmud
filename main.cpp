@@ -9,9 +9,9 @@ int main()
     endGame = false;
     TCODConsole::initRoot(80, 50, "CZGame", false);
     char *field[] =
-    { "....####",
-        "....#..#",
-        "....#..#",
+    { "    ####",
+        "    #..#",
+        "    #..#",
         "#####..#",
         "#......#",
         "#......#",
@@ -28,6 +28,9 @@ int main()
             if (field[i][j] == '#')
             {
             vfield[i][j] = 1;
+            } else if (field[i][j] == '.')
+            {
+                vfield[i][j] = 2;
             } else
             {
                 vfield[i][j] = 0;
