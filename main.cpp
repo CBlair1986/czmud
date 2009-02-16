@@ -34,7 +34,7 @@ int main()
             }
         }
     }
-    Region * region = new Region(vfield);
+    Region * region = new Region(vfield, 40, 25);
     Player * player = new Player (0, 0, '@', region);
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {
@@ -47,6 +47,8 @@ int main()
         handleInput(key, player);
     }
     // Cleanup goes here...
+    delete region;
+    delete player;
     return 0;
 }
 

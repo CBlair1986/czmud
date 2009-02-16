@@ -5,6 +5,7 @@
 // I will use them everywhere.
 
 #include <sstream>
+#include <iostream>
 #include <string>
 #include <vector>
 #include <cstring>

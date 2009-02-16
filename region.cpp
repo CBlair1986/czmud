@@ -14,9 +14,11 @@ Region::Region(int a_seed)
 
 // This is mainly for testing purposes; I can define a set floor pattern, to
 // see if it displays correctly.
-Region::Region(vector<vector<int > > a_floor)
+Region::Region(vector<vector<int > > a_floor, int cx, int cy)
 {
     floor = a_floor;
+    centerx = cx;
+    centery = cy;
 }
 
 // TODO: This will set the region up, storing the neccessary data for the room
@@ -29,4 +31,35 @@ void Region::makeRegion()
 // regions when neccessary.
 void Region::drawRegion()
 {
+    /*
+       cout << floor.size() << endl;
+       cout << "X: " << centerx << endl;
+       cout << "Y: " << centery << endl;
+       */
+
+    // I need to draw the appropriate region using the appropriate symbols.
+    // 0 -> ' '
+    // 1 -> '#'
+    // Should be easy.
+    int width = floor[0].size();
+    int height = floor.size();
+    int half_width = width / 2;
+    int half_height = height / 2;
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            char symbol;
+            if (floor[i][j])
+            {
+                symbol = '#';
+            } else
+            {
+                symbol = ' ';
+            }
+            int x = j + (centerx - half_width);
+            int y = i + (centery - half_height);
+            TCODConsole::root->putChar(x,y,symbol,TCOD_BKGND_NONE);
+        }
+    }
 }

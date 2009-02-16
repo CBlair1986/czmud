@@ -22,7 +22,7 @@ class Region
     public:
     Region(uint32);
     Region(int);
-    Region(vector<vector<int > >);
+    Region(vector<vector<int > >,int,int);
     int getSeed() { return seed; }
     void makeRegion();
     void drawRegion();
