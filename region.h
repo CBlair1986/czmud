@@ -17,12 +17,12 @@ class Region
      *   this would probably be an array, since I'm always gonna need the whole thing...
      */
     uint32 seed;
-    int centerx, centery;
-    vector<vector<int > > floor;
+    int cornerx, cornery;
+    VMap floor;
     public:
     Region(uint32);
     Region(int);
-    Region(vector<vector<int > >,int,int);
+    Region(VMap,int,int);
     int getSeed() { return seed; }
     void makeRegion();
     void drawRegion();

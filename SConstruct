@@ -8,7 +8,8 @@ region = env.Object('region.cpp')
 player = env.Object('player.cpp')
 nonplayer = env.Object('nonplayer.cpp')
 input = env.Object('input.cpp')
+vmap = env.Object('vmap.cpp')
 
-objects = [main, globals, region, player, nonplayer, input]
+objects = [main, globals, region, player, nonplayer, input, vmap]
 env.Program('czgame', objects)
 Clean(main,[Glob('*~'),Glob('*.swp'),'.sconsign.dblite','*~'])

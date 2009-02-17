@@ -10,30 +10,26 @@ int main()
     TCODConsole::initRoot(80, 50, "CZGame", false);
     char *field[] =
     { "    ####",
-        "    #..#",
-        "    #..#",
-        "#####..#",
-        "#......#",
-        "#......#",
-        "########" };
-    vector<vector<int > > vfield;
-    for (int i = 0; i < 8; i++)
-    {
-        vfield.push_back(vector<int>(8));
-    }
+      "    #..#",
+      "    #..#",
+      "#####..#",
+      "#......#",
+      "#......#",
+      "########" };
+    VMap vfield (8,8);
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 8; j++)
         {
             if (field[i][j] == '#')
             {
-            vfield[i][j] = 1;
+                vfield.setCell(j,i,1);
             } else if (field[i][j] == '.')
             {
-                vfield[i][j] = 2;
+                vfield.setCell(j,i,2);
             } else
             {
-                vfield[i][j] = 0;
+                vfield.setCell(j,i,0);
             }
         }
     }

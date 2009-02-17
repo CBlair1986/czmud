@@ -12,6 +12,8 @@
 using namespace std;
 
 #include "globals.h"
+#include "types.h"
+#include "vmap.h"
 #include "libtcod.hpp"
 #include "region.h"
 #include "vector.h"

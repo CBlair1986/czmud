@@ -14,17 +14,24 @@ Region::Region(int a_seed)
 
 // This is mainly for testing purposes; I can define a set floor pattern, to
 // see if it displays correctly.
-Region::Region(vector<vector<int > > a_floor, int cx, int cy)
+Region::Region(VMap a_floor, int cx, int cy)
 {
     floor = a_floor;
-    centerx = cx;
-    centery = cy;
+    cornerx = cx;
+    cornery = cy;
 }
 
 // TODO: This will set the region up, storing the neccessary data for the room
 // for later use.
 void Region::makeRegion()
 {
+    TCODRandom *gen = TCODRandom::getInstance();
+    int width = gen->getInt(5,15);
+    int height = gen->getInt(5,15);
+    floor = VMap(width,height);
+    // TODO: I'm going to use the 'glue it on' method of making irregular rooms
+    // I suppose.
+    TCODConsole::root->printLeft(0,0,TCOD_BKGND_NONE,"%d,%d",width,height);
 }
 
 // TODO: This will draw the region to the screen, proceeding to neighboring
@@ -37,28 +44,9 @@ void Region::drawRegion()
     // Should be easy.
     // TODO Make this sensible. You should reference the number you get to some
     // sort of table of types, one per number possible.
-    int width = floor[0].size();
-    int height = floor.size();
-    int half_width = width / 2;
-    int half_height = height / 2;
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            char symbol;
-            if (floor[i][j] == 1)
-            {
-                symbol = '#';
-            } else if (floor[i][j] == 2)
-            {
-                symbol = '.';
-            } else
-            {
-                symbol = ' ';
-            }
-            int x = j + (centerx - half_width);
-            int y = i + (centery - half_height);
-            TCODConsole::root->putChar(x,y,symbol,TCOD_BKGND_NONE);
-        }
-    }
+
+    // TODO: I'll do some conditional rotation things here, eventually.
+
+    // Draw the map.
+    floor.drawMap(cornerx,cornery);
 }
