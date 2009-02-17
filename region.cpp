@@ -49,4 +49,11 @@ void Region::drawRegion()
 
     // Draw the map.
     floor.drawMap(cornerx,cornery);
+    // Draw the objects.
+    // for key in objects
+    // key is (x,y) position in the region
+    // key points to value, which will be a list of item objects.
+    // item.symbol is what we want.
+
+    // Draw the creatures (this includes the player)
 }
