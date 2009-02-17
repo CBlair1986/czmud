@@ -8,32 +8,7 @@ int main()
      */
     endGame = false;
     TCODConsole::initRoot(80, 50, "CZGame", false);
-    char *field[] =
-    { "    ####",
-      "    #..#",
-      "    #..#",
-      "#####..#",
-      "#......#",
-      "#......#",
-      "########" };
-    VMap vfield (8,8);
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            if (field[i][j] == '#')
-            {
-                vfield.setCell(j,i,1);
-            } else if (field[i][j] == '.')
-            {
-                vfield.setCell(j,i,2);
-            } else
-            {
-                vfield.setCell(j,i,0);
-            }
-        }
-    }
-    Region * region = new Region(vfield, 40, 25);
+    Region * region = new Region(1);
     Player * player = new Player (0, 0, '@', region);
     while ( ! endGame && ! TCODConsole::isWindowClosed() )
     {

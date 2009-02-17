@@ -1,6 +1,5 @@
 #include "main.h"
 
-using namespace std;
 /**
  * Initializes a player, setting the foreground and background colors to the
  * default white and black, respectively.
